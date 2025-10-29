@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import base64
+import os
 
 # Title
 st.title("❤️ Heart Disease Prediction")
@@ -49,6 +50,7 @@ modelnames = ['ranfor.pkl']
 
 def predict_heart_disease(data):
     predictions = []
+    base_path = os.path.dirname(__file__)
     for modelname in modelnames:
         model = pickle.load(open(modelname, 'rb'))
         prediction = model.predict(data)
